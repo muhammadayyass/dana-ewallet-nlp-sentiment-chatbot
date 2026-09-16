@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANA Care & Sentiment AI Dashboard</title>
+    <!-- Google Fonts: Plus Jakarta Sans for a clean, modern Fintech look -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="layout">
+        <!-- SIDEBAR (Kontrol & Analitik) -->
+        <aside class="sidebar">
+            <div class="brand-header">
+                <div class="dana-logo-svg">
+                    <!-- Logo Resmi DANA -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA Logo">
+                </div>
+                <div class="brand-text">
+                    <div class="brand-title">DANA AI ✦</div>
+                    <div class="brand-sub">Enterprise NLP Engine</div>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <!-- Sesi Analitik -->
+                <div class="sidebar-section">
+                    <div class="section-label">📊 Session Analytics</div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="statMsg">0</div>
+                            <div class="stat-label">Total Logs</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="statIntent">0</div>
+                            <div class="stat-label">AI Intents</div>
+                        </div>
+                    </div>
+                    <!-- Meteran Klasifikasi Sentimen SVM -->
+                    <div class="sentiment-meter">
+                        <div class="meter-title">MACHINE LEARNING (SVM)</div>
+                        <div class="meter-row">
+                            <span class="meter-label pos">🟢 Prediksi POSITIF</span>
+                            <span class="meter-score pos" id="countPos">0</span>
+                        </div>
+                        <div class="meter-row">
+                            <span class="meter-label neg">🔴 Prediksi NEGATIF</span>
+                            <span class="meter-score neg" id="countNeg">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topik Simulasi Cepat -->
+                <div class="sidebar-section">
+                    <div class="section-label">📌 Simulation Topics</div>
+                    <div class="quick-topics">
+                        <button class="topic-btn" data-msg="Bagaimana cara top up saldo?">💸 Top Up Guide</button>
+                        <button class="topic-btn" data-msg="Kenapa bayar pakai QRIS error terus?">📱 QRIS Troubleshooting</button>
+                        <button class="topic-btn" data-msg="Ada penipu minta OTP saya, tolong!">🚨 Fraud Alert Simulation</button>
+                        <button class="topic-btn" data-msg="Analisis sentimen: Aplikasinya keren, QRIS lancar banget">🟢 Uji SVM: Kalimat Positif</button>
+                    </div>
+                </div>
+                
+                <!-- Panel Kontrol Aksi -->
+                <div class="ai-controls">
+                    <button id="voiceToggle" class="action-btn">🔊 Voice AI: OFF</button>
+                    <button class="action-btn" id="downloadBtn">📄 Export CSV Data</button>
+                    <button class="action-btn clear-btn" id="clearBtn">🧹 Clear Dashboard</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- AREA CHAT UTAMA -->
+        <section class="chat-area">
+            <header class="chat-header">
+                <div class="header-info">
+                    <div class="bot-avatar-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA">
+                    </div>
+                    <div>
+                        <h3>DANA Automated Resolution Center</h3>
+                        <span class="status-pill"><span class="status-dot"></span> ML System Online</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Wadah Pesan Chat -->
+            <div class="messages" id="messages"></div>
+
+            <!-- Indikator Mengetik (Animasi) -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span> AI sedang menganalisis & memproses data...
+            </div>
+
+            <!-- Formulir Input Chat -->
+            <form class="chat-form" id="chatForm">
+                <div class="input-wrapper">
+                    <button type="button" id="micBtn" class="mic-btn" title="Gunakan Suara (Speech-to-Text)">🎤</button>
+                    <input type="text" id="messageInput" class="message-input" placeholder="Masukkan keluhan atau uji algoritma NLP..." required autocomplete="off">
+                    <button type="submit" class="send-btn" id="sendBtn">Analyze</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
